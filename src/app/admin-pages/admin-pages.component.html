@@ -8,14 +8,26 @@
       <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
           <a [routerLink]="['/admin/bookings']" routerLinkActive="active" class="nav-link text-white"  aria-current="page">
-            <mat-icon class="me-2">event</mat-icon>
+            <mat-icon class="me-2">calendar_month</mat-icon>
             Bookings
           </a>
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/admin/book']" routerLinkActive="active" class="nav-link text-white"  aria-current="page">
+          <a [routerLink]="['/admin/place-booking']" routerLinkActive="active" class="nav-link text-white"  aria-current="page">
             <mat-icon class="me-2">event</mat-icon>
             Place Booking
+          </a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/admin/guest-book']" routerLinkActive="active" class="nav-link text-white"  aria-current="page">
+            <mat-icon class="me-2">contacts</mat-icon>
+            Guest Book
+          </a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/admin/properties']" routerLinkActive="active" class="nav-link text-white"  aria-current="page">
+            <mat-icon class="me-2">apartment</mat-icon>
+            Properties
           </a>
         </li>
       </ul>
