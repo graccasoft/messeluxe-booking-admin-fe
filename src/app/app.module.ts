@@ -20,6 +20,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import { TableModule } from 'primeng/table';
+import { AddPropertyComponent } from './admin-pages/add-property/add-property.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { TableModule } from 'primeng/table';
     PlaceBookingComponent,
     GuestBookComponent,
     PropertiesComponent,
-    PropertyComponent
+    PropertyComponent,
+    AddPropertyComponent
   ],
   imports: [
     BrowserModule,

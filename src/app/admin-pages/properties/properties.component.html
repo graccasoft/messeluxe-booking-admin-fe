@@ -1,1 +1,23 @@
-<p>properties works!</p>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Properties</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <a routerLink="/admin/add-property" class="btn btn-sm btn-outline-secondary">Add New</a>
+    </div>
+</div>
+
+<p-table [value]="properties" tableStyleClass="table table-striped table-bordered">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-property>
+        <tr>
+            <td>{{ property.value }}</td>
+            <td>{{ property.value }}</td>
+            <td></td>
+        </tr>
+    </ng-template>
+</p-table>

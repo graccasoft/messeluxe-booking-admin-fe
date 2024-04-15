@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { PlaceBookingComponent } from './admin-pages/place-booking/place-booking.component';
 import { GuestBookComponent } from './admin-pages/guest-book/guest-book.component';
 import { PropertiesComponent } from './admin-pages/properties/properties.component';
+import { AddPropertyComponent } from './admin-pages/add-property/add-property.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'place-booking', component: PlaceBookingComponent },
       { path: 'guest-book', component: GuestBookComponent },
       { path: 'properties', component: PropertiesComponent },
+      { path: 'add-property', component: AddPropertyComponent },
     ]
   }
 ];
