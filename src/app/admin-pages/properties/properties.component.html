@@ -15,8 +15,11 @@
     </ng-template>
     <ng-template pTemplate="body" let-property>
         <tr>
-            <td>{{ property.value }}</td>
-            <td>{{ property.value }}</td>
+            <td>
+                <img *ngIf="property.attachments.length > 0 " [src]="'/api/attachments/' + property.attachments[0].attachmentFileId" width="200px"><br>
+                {{ property.name }}
+            </td>
+            <td>{{ property.address }}</td>
             <td></td>
         </tr>
     </ng-template>

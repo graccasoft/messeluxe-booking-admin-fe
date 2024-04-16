@@ -8,8 +8,9 @@ export interface Unit {
     minBookingDate: number;
     address: string;
     city: string;
-    normalServices: string
-    additionalServices: string
-    dayPrice: number
-    property: Property
+    normalServices: string;
+    additionalServices: string;
+    dayPrice: number;
+    property: Property;
+    attachments: any[]
 }

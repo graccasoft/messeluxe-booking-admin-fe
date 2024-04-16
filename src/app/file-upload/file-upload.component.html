@@ -1,0 +1,4 @@
+<p-fileUpload mode="basic" [chooseLabel]="label" 
+url="/api/attachments"
+name="file" accept=".jpg, .jpeg, .png, .pdf, .xls, .xlsx, .csv" [auto]="true" (onUpload)="select($event)" [style]="{padding: '0.5rem 1.25rem'}"></p-fileUpload>
+<div style="overflow: hidden;width: 100%;height: 18px;font-size: small;">{{uploadedFileName}}</div>

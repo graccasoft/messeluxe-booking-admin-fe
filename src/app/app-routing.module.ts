@@ -7,13 +7,14 @@ import { PlaceBookingComponent } from './admin-pages/place-booking/place-booking
 import { GuestBookComponent } from './admin-pages/guest-book/guest-book.component';
 import { PropertiesComponent } from './admin-pages/properties/properties.component';
 import { AddPropertyComponent } from './admin-pages/add-property/add-property.component';
+import { authGuard } from './service/auth.guard';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
   {
     path: 'admin', component: AdminPagesComponent,
-    canActivate: [],
+    canActivate: [authGuard],
     children: [
       { path: '', component: BookingsComponent },
       { path: 'bookings', component: BookingsComponent },

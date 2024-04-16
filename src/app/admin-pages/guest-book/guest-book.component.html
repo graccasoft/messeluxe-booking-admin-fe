@@ -14,10 +14,10 @@
     </ng-template>
     <ng-template pTemplate="body" let-guest>
         <tr>
-            <td>{{ guest.value }}</td>
-            <td>{{ guest.value }}</td>
-            <td>{{ guest.value }}</td>
-            <td>{{ guest.value }}</td>
+            <td>{{ guest.name + ' ' + guest.surname }}</td>
+            <td>{{ guest.phoneNumber }}</td>
+            <td>{{ guest.email }}</td>
+            <td>{{ guest.nationality }}</td>
             <td></td>
         </tr>
     </ng-template>

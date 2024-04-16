@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,7 +21,17 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import { TableModule } from 'primeng/table';
 import { AddPropertyComponent } from './admin-pages/add-property/add-property.component';
-
+import { AuthService } from './service/auth.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthHttpInterceptorService } from './service/auth-http-interceptor.service';
+import { MatSnackBarModule} from '@angular/material/snack-bar';
+import { FileUploadComponent } from './file-upload/file-upload.component';
+import { FileUploadModule } from 'primeng/fileupload';
+export function initializeAuth(authService: AuthService) {
+  return (): Promise<any> => {
+    return authService.initialize();
+  }
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +42,8 @@ import { AddPropertyComponent } from './admin-pages/add-property/add-property.co
     GuestBookComponent,
     PropertiesComponent,
     PropertyComponent,
-    AddPropertyComponent
+    AddPropertyComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,
@@ -47,9 +58,23 @@ import { AddPropertyComponent } from './admin-pages/add-property/add-property.co
     MatNativeDateModule,
     MatSelectModule,
     MatButtonModule,
-    TableModule
+    TableModule,
+    MatSnackBarModule,
+    FileUploadModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeAuth,
+      deps: [AuthService],
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthHttpInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
