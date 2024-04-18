@@ -1,1 +1,111 @@
-<p>property works!</p>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-1 pb-2 mb-3 border-bottom">
+    <h1 class="h2">View Property</h1>
+    <a (click)="showDialog()" class="btn btn-success btn-sm mb-3 mt-3">Edit Property</a>
+</div>
+
+<div *ngIf="property">
+    <div class="row mb-2">
+        <div class="col-md-6">
+            <strong>Name</strong>: {{property.name}}
+        </div>
+        <div class="col-md-6">
+            <strong>Address</strong>: {{property.address}}
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-md-6">
+            <strong>City</strong>: {{property.city}}
+        </div>
+        <div class="col-md-6">
+            <strong>Entire Place Price</strong>: {{property.price}}
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-md-12">
+            <strong>Description</strong>: {{property.description}}
+        </div>
+    </div>
+</div>
+
+
+<h1 class="h4 mt-2" class="border-top">Units</h1>
+
+<a *ngIf="property" [routerLink]="['/admin/add-to-property', property.id]" class="btn btn-success btn-sm mb-3">Add
+    New Unit</a>
+<p-table [value]="units" tableStyleClass="table table-striped table-bordered">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Name</th>
+            <th>Max Guests</th>
+            <th>Min Booking Days</th>
+            <th>Price</th>
+            <th>Services</th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-unit>
+        <tr>
+            <td>
+                <img *ngIf="unit.attachments.length > 0 "
+                    [src]="'/api/attachments/' + unit.attachments[0].attachmentFile.id" width="60px">
+                {{ unit.name }}
+            </td>
+            <td>{{ unit.maxGuests }}</td>
+            <td>{{ unit.minBookingDate }}</td>
+            <td>{{ unit.dayPrice }}</td>
+            <td>{{ unit.normalServices }}</td>
+            <td>
+                <a [routerLink]="['/admin/edit-property', unit.id]" class="btn btn-success btn-sm">Edit</a>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<p-dialog header="Edit" [(visible)]="dialogVisible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false"
+    [resizable]="false">
+    <form *ngIf="property">
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <mat-form-field class="w-100">
+                    <mat-label>Name</mat-label>
+                    <input matInput name="name" placeholder="Name" [(ngModel)]="property.name">
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field class="w-100">
+                    <mat-label>Address</mat-label>
+                    <input matInput name="address" placeholder="Address" [(ngModel)]="property.address">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <mat-form-field class="w-100">
+                    <mat-label>City</mat-label>
+                    <input matInput name="city" placeholder="City" [(ngModel)]="property.city">
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field class="w-100">
+                    <mat-label>Entire Place Price</mat-label>
+                    <input matInput name="price" placeholder="Entire Place Price" [(ngModel)]="property.price">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-12">
+                <mat-form-field class="w-100">
+                    <mat-label>Description</mat-label>
+                    <input matInput name="description" placeholder="Description" [(ngModel)]="property.description">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-12">
+                <button mat-flat-button color="primary"  (click)="editProperty()">Save Changes</button>
+            </div>
+        </div>
+    </form>
+</p-dialog>

@@ -27,12 +27,12 @@
                         <input matInput formControlName="minBookingDate" placeholder="Min Booking Day">
                     </mat-form-field>
                 </div>
-                
+
                 <div class="col-6">
                     <mat-form-field class="w-100">
                         <mat-label>City</mat-label>
                         <mat-select formControlName="city">
-                            <mat-option *ngFor="let city of cities" [value]="city">city</mat-option>
+                            <mat-option *ngFor="let city of cities" [value]="city">{{city}}</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
@@ -98,13 +98,13 @@
         </div>
         <div class="col-md-6">
             <app-file-upload [fileType]="'referenceLetters3'"
-                                    (fileUploadedEvent)="fileUploaded($event)"></app-file-upload>
+                (fileUploadedEvent)="fileUploaded($event)"></app-file-upload>
         </div>
     </div>
 
     <div class="row mb-4">
         <div class="col-md-9 text-end">
-            <button mat-flat-button color="primary" (click)="submit()">Add Property</button>
+            <button [disabled]="!form.form.valid" mat-flat-button color="primary" (click)="submit()">Add Property</button>
         </div>
     </div>
 </form>

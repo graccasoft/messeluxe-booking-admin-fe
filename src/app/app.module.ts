@@ -27,6 +27,7 @@ import { AuthHttpInterceptorService } from './service/auth-http-interceptor.serv
 import { MatSnackBarModule} from '@angular/material/snack-bar';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { FileUploadModule } from 'primeng/fileupload';
+import { DialogModule } from 'primeng/dialog';
 export function initializeAuth(authService: AuthService) {
   return (): Promise<any> => {
     return authService.initialize();
@@ -60,7 +61,8 @@ export function initializeAuth(authService: AuthService) {
     MatButtonModule,
     TableModule,
     MatSnackBarModule,
-    FileUploadModule
+    FileUploadModule,
+    DialogModule
   ],
   providers: [
     {

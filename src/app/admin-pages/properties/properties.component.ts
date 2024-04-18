@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Property } from 'src/app/model/property';
 import { Unit } from 'src/app/model/unit';
 import { ApiService } from 'src/app/service/api.service';
 
@@ -9,12 +10,12 @@ import { ApiService } from 'src/app/service/api.service';
 })
 export class PropertiesComponent implements OnInit {
 
-  properties: Unit[] = []
+  properties: Property[] = []
   constructor(private apiService: ApiService){}
 
   ngOnInit(): void {
-      this.apiService.getUnits().subscribe(units=>{
-        this.properties = units
+      this.apiService.getProperties().subscribe(properties=>{
+        this.properties = properties
       })
   }
 }

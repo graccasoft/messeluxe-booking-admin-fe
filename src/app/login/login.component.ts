@@ -31,7 +31,7 @@ export class LoginComponent {
     this.loginService.signIn(this.form.value)
       .pipe(
         catchError(err => {
-          this.snackBar.open( err?.error?.message ?? 'Could not log you in' );
+          this.snackBar.open( err?.error?.message ?? 'Could not log you in', 'Ok' );
           return throwError(err)
         }),
       )

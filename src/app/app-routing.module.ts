@@ -8,6 +8,7 @@ import { GuestBookComponent } from './admin-pages/guest-book/guest-book.componen
 import { PropertiesComponent } from './admin-pages/properties/properties.component';
 import { AddPropertyComponent } from './admin-pages/add-property/add-property.component';
 import { authGuard } from './service/auth.guard';
+import { PropertyComponent } from './admin-pages/property/property.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -21,7 +22,10 @@ const routes: Routes = [
       { path: 'place-booking', component: PlaceBookingComponent },
       { path: 'guest-book', component: GuestBookComponent },
       { path: 'properties', component: PropertiesComponent },
+      { path: 'properties/:id', component: PropertyComponent },
       { path: 'add-property', component: AddPropertyComponent },
+      { path: 'edit-property/:id', component: AddPropertyComponent },
+      { path: 'add-to-property/:propertyId', component: AddPropertyComponent },
     ]
   }
 ];

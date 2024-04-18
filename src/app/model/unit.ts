@@ -12,5 +12,6 @@ export interface Unit {
     additionalServices: string;
     dayPrice: number;
     property: Property;
-    attachments: any[]
+    attachments: any[];
+    isEntirePlace: boolean;
 }
