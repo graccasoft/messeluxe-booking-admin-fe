@@ -30,12 +30,7 @@ export class BookingsComponent implements OnInit {
     this.toggleDialogVisible(true)
   }
 
-  updateStatus(){
-    this.apiService.updateBookingStatus(this.booking.bookingStatus, this.booking.id).subscribe(response=>{
-      this.matSnackBar.open("Status updated", "Ok")
-      this.toggleDialogVisible(false);
-    })
-  }
+  
   deleteBooking(id: number){
     if( !confirm('Are you sure') ){ return }
     this.apiService.deleteBooking(id).subscribe(response=>{

@@ -9,6 +9,7 @@ import { PropertiesComponent } from './admin-pages/properties/properties.compone
 import { AddPropertyComponent } from './admin-pages/add-property/add-property.component';
 import { authGuard } from './service/auth.guard';
 import { PropertyComponent } from './admin-pages/property/property.component';
+import { CalenderViewComponent } from './admin-pages/calender-view/calender-view.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
     children: [
       { path: '', component: BookingsComponent },
       { path: 'bookings', component: BookingsComponent },
+      { path: 'calender-view', component: CalenderViewComponent },
       { path: 'place-booking', component: PlaceBookingComponent },
       { path: 'guest-book', component: GuestBookComponent },
       { path: 'properties', component: PropertiesComponent },

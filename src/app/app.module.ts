@@ -28,6 +28,10 @@ import { MatSnackBarModule} from '@angular/material/snack-bar';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { FileUploadModule } from 'primeng/fileupload';
 import { DialogModule } from 'primeng/dialog';
+import { CalenderViewComponent } from './admin-pages/calender-view/calender-view.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { BookingModalComponent } from './admin-pages/booking-modal/booking-modal.component';
 export function initializeAuth(authService: AuthService) {
   return (): Promise<any> => {
     return authService.initialize();
@@ -44,7 +48,9 @@ export function initializeAuth(authService: AuthService) {
     PropertiesComponent,
     PropertyComponent,
     AddPropertyComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    CalenderViewComponent,
+    BookingModalComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +68,11 @@ export function initializeAuth(authService: AuthService) {
     TableModule,
     MatSnackBarModule,
     FileUploadModule,
-    DialogModule
+    DialogModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
   ],
   providers: [
     {
