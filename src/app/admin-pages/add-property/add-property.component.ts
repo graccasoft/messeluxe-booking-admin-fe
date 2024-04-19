@@ -3,7 +3,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError } from 'rxjs';
 import { UnitForm } from 'src/app/forms/unit-form';
+import { AdditionalService } from 'src/app/model/additional-service';
 import { Unit } from 'src/app/model/unit';
+import { AdditionalServicesService } from 'src/app/service/additional-services.service';
 import { ApiService } from 'src/app/service/api.service';
 
 @Component({
@@ -17,6 +19,9 @@ export class AddPropertyComponent implements OnInit {
   files: any[] = []
   editingUnit!: Unit;
   propertyId = 0;
+  services: AdditionalService[] =[]
+  
+  existingFiles: any[] = [];
 
   cities = [
     "Beitbridge", "Bindura", "Binga",
@@ -35,7 +40,8 @@ export class AddPropertyComponent implements OnInit {
     public form: UnitForm,
     private snackBar: MatSnackBar,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private servicesService: AdditionalServicesService
   ) { }
 
   ngOnInit(): void {
@@ -47,16 +53,41 @@ export class AddPropertyComponent implements OnInit {
             this.editingUnit = unit;
 
          })
+
+         this.apiService.getUnitAttachments(s['id'], 0).subscribe(attachments =>{
+          this.existingFiles = attachments;
+         })
       }
       if( s['propertyId'] ){
         this.propertyId = s['propertyId']
       }
     })
+
+    this.servicesService.get().subscribe(services=>{
+      this.services = services
+    })
+  }
+
+  selectedExtraServices(){    
+    if( this.editingUnit  ){
+      return this.editingUnit.extraServices;
+    }
+
+    return [];
   }
 
   fileUploaded(file: any) {
     this.files.push({ attachmentFileId: file.fileId, unitId: 0 });
   }
+
+  deleteAttachment(file:any){
+    if( confirm('Are you sure?') ){
+      this.apiService.deleteUnitAttachment(file.attachmentFileId).subscribe(response=>{
+        this.existingFiles = this.existingFiles.filter(eFile => { return file.attachmentFileId != eFile.attachmentFileId }  );
+      })
+    }
+  }
+
 
   submit() {
     let saveRequest$ = this.apiService.saveProperty( this.form.value as Unit )

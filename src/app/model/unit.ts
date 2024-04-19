@@ -1,3 +1,4 @@
+import { AdditionalService } from "./additional-service";
 import { Property } from "./property";
 
 export interface Unit {
@@ -14,4 +15,5 @@ export interface Unit {
     property: Property;
     attachments: any[];
     isEntirePlace: boolean;
+    extraServices:AdditionalService[]
 }

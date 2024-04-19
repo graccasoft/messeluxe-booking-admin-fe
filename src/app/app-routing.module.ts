@@ -10,6 +10,7 @@ import { AddPropertyComponent } from './admin-pages/add-property/add-property.co
 import { authGuard } from './service/auth.guard';
 import { PropertyComponent } from './admin-pages/property/property.component';
 import { CalenderViewComponent } from './admin-pages/calender-view/calender-view.component';
+import { AdditionalServicesComponent } from './admin-pages/additional-services/additional-services.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -28,6 +29,7 @@ const routes: Routes = [
       { path: 'add-property', component: AddPropertyComponent },
       { path: 'edit-property/:id', component: AddPropertyComponent },
       { path: 'add-to-property/:propertyId', component: AddPropertyComponent },
+      { path: 'additional-services', component: AdditionalServicesComponent },
     ]
   }
 ];

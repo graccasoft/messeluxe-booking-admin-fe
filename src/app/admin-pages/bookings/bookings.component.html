@@ -35,4 +35,4 @@
     </ng-template>
 </p-table>
 
-<app-booking-modal [booking]="booking" [dialogVisible]="dialogVisible"></app-booking-modal>
+<app-booking-modal [booking]="booking" [dialogVisible]="dialogVisible" (closeModal)="toggleDialogVisible($event)"></app-booking-modal>

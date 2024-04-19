@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms";
 import { Unit } from "../model/unit";
+import { AdditionalService } from "../model/additional-service";
 
 @Injectable()
 export class UnitForm {
@@ -14,6 +15,7 @@ export class UnitForm {
     normalServices: FormControl<string | null>
     additionalServices: FormControl<string | null>
     dayPrice: FormControl<number | null>
+    extraServices: FormControl<AdditionalService[] | null>
 
   }>;
   constructor(private fb: FormBuilder) {
@@ -24,9 +26,10 @@ export class UnitForm {
       minBookingDate: this.fb.control<number | null>(null, [Validators.required]),
       address: this.fb.control<string | null>(null, [Validators.required]),
       city: this.fb.control<string | null>(null, [Validators.required]),
-      normalServices: this.fb.control<string | null>(null, [Validators.required]),
-      additionalServices: this.fb.control<string | null>(null, [Validators.required]),
+      normalServices: this.fb.control<string | null>(null, []),
+      additionalServices: this.fb.control<string | null>(null, []),
       dayPrice: this.fb.control<number | null>(null, [Validators.required]),
+      extraServices: this.fb.control<AdditionalService[] | null>(null, []),
     });
   }
   get value(): Unit {

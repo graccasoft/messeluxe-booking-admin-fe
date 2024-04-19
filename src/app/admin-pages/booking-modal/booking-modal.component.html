@@ -1,7 +1,10 @@
-<p-dialog header="View Booking" [(visible)]="dialogVisible" [modal]="true" [style]="{ width: '50vw' }"
+<p-dialog header="View Booking"  (onHide)="modalClosed()"  [(visible)]="dialogVisible" [modal]="true" [style]="{ width: '50vw' }"
     [draggable]="false" [resizable]="false">
 
     <div *ngIf="booking">
+        <div class="row mb-2">
+            <div class="col-md-12"><strong>Apartment</strong>:{{ booking.unit ? booking.unit.name : booking.property?.name + ' (Entire place)' }}</div>
+        </div>
         <div class="row mb-2">
             <div class="col-md-6"><strong>Date from</strong>:{{booking.checkInDate | date:'MMM d, y'}}</div>
             <div class="col-md-6"><strong>Date to</strong>:{{booking.checkOutDate | date:'MMM d, y'}}</div>

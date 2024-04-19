@@ -47,6 +47,13 @@ export class ApiService {
     return this.httpClient.post<Unit>(`${this.apiBaseEndPoint}/properties/${propertyId}/units/${unitId}/attachments`, attachments);
   }
 
+  getUnitAttachments(unitId: number, propertyId: number): Observable<any[]> {
+    return this.httpClient.get<any[]>(`${this.apiBaseEndPoint}/properties/${propertyId}/units/${unitId}/attachments`);
+  }
+  deleteUnitAttachment(attachmentFileId: number): Observable<any[]> {
+    return this.httpClient.delete<any[]>(`${this.apiBaseEndPoint}/properties/0/units/0/attachments/${attachmentFileId}`);
+  }
+
   saveProperty(unit: Unit): Observable<Unit> {
     return this.httpClient.post<Unit>(`${this.apiBaseEndPoint}/properties`, unit)
   }

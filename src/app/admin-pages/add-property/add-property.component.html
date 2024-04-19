@@ -77,17 +77,19 @@
                 <div class="col-12 mb-2">
                     <mat-form-field class="w-100">
                         <mat-label>Normal Services</mat-label>
-                        <input matInput formControlName="normalServices" placeholder="First Name">
-                        <mat-hint>Separate by comma</mat-hint>
+                        <mat-select formControlName="extraServices" [multiple]="true">
+                            <mat-option selected  *ngFor="let service of services" [value]="service">{{service.name}}</mat-option>
+                        </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-12">
+                <div class="col-12 mb-2">
                     <mat-form-field class="w-100">
                         <mat-label>Additional Services</mat-label>
                         <input matInput formControlName="additionalServices" placeholder="First Name">
                         <mat-hint>Separate by comma</mat-hint>
                     </mat-form-field>
                 </div>
+                
             </div>
         </div>
     </div>
@@ -102,9 +104,36 @@
         </div>
     </div>
 
+    <div class="row mb-4" *ngIf="existingFiles.length > 0">
+        <div class="col-md-3">
+            <label>Existing Images</label>
+        </div>
+        <div class="col-md-6">
+
+            <div class="row">
+
+                <div class="col-md-3 text-center" *ngFor="let image of existingFiles">
+
+                    <div class="w-100 border rounded-1">
+                        <p-image [src]="'/api/attachments/'+ image.attachmentFileId" alt="Image" width="100%"
+                            [preview]="true"></p-image>
+                        <button class="mt-2" mat-fab color="warn" aria-label="Delete image"
+                            (click)="deleteAttachment(image)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
     <div class="row mb-4">
         <div class="col-md-9 text-end">
-            <button [disabled]="!form.form.valid" mat-flat-button color="primary" (click)="submit()">Add Property</button>
+            <button [disabled]="!form.form.valid" mat-flat-button color="primary" (click)="submit()">Save
+                Property</button>
         </div>
     </div>
 </form>

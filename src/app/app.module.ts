@@ -32,6 +32,9 @@ import { CalenderViewComponent } from './admin-pages/calender-view/calender-view
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { BookingModalComponent } from './admin-pages/booking-modal/booking-modal.component';
+import { ImageModule } from 'primeng/image';
+import { AdditionalServicesComponent } from './admin-pages/additional-services/additional-services.component';
+
 export function initializeAuth(authService: AuthService) {
   return (): Promise<any> => {
     return authService.initialize();
@@ -50,7 +53,8 @@ export function initializeAuth(authService: AuthService) {
     AddPropertyComponent,
     FileUploadComponent,
     CalenderViewComponent,
-    BookingModalComponent
+    BookingModalComponent,
+    AdditionalServicesComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +77,9 @@ export function initializeAuth(authService: AuthService) {
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
+    ImageModule
+
+
   ],
   providers: [
     {

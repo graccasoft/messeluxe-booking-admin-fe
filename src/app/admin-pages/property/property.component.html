@@ -55,7 +55,10 @@
             <td>{{ unit.maxGuests }}</td>
             <td>{{ unit.minBookingDate }}</td>
             <td>{{ unit.dayPrice }}</td>
-            <td>{{ unit.normalServices }}</td>
+            <td>
+
+                <span class="badge text-bg-secondary" *ngFor="let service of unit.extraServices">{{service.name}}</span>
+            </td>
             <td>
                 <a [routerLink]="['/admin/edit-property', unit.id]" class="btn btn-success btn-sm">Edit</a>
             </td>

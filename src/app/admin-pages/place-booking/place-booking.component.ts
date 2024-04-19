@@ -48,7 +48,8 @@ export class PlaceBookingComponent implements OnInit {
           maxGuests: 0,
           minBookingDate: 1,
           normalServices: "",
-          property: property
+          property: property,
+          extraServices:[]
         })
 
       })

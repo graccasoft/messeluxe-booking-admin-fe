@@ -129,4 +129,8 @@ export class CalenderViewComponent implements OnInit {
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;
   }
+
+  toggleDialogVisible(visible: boolean){
+    this.dialogVisible = visible
+  }
 }
