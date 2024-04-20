@@ -12,7 +12,7 @@ export class AdditionalServicesComponent implements OnInit {
 
   services: AdditionalService[] = []
   dialogVisible: boolean = false;
-  editingService: AdditionalService = {id: null, name:'', price:0};
+  editingService: AdditionalService = {id: null, name:'', price:0, priceType1:'Person',priceType2:'Day'};
   constructor(
     private service: AdditionalServicesService,
     private matSnackBar: MatSnackBar
@@ -28,7 +28,7 @@ export class AdditionalServicesComponent implements OnInit {
     })
   }
   addService(){
-    this.editingService = {id: null, name:'', price:0};
+    this.editingService = {id: null, name:'', price:0, priceType1:'Person',priceType2:'Day'};
     this.showDialog();
   }
 

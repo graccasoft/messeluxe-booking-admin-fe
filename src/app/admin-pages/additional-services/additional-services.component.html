@@ -7,6 +7,8 @@
         <tr>
             <th>Name</th>
             <th>Price</th>
+            <th>Price Type1</th>
+            <th>Price Type2</th>
             <th></th>
         </tr>
     </ng-template>
@@ -14,6 +16,8 @@
         <tr>
             <td>{{ service.name }}</td>
             <td>{{ service.price | number:'1.2-2' }}</td>
+            <td>{{ service.priceType1 }}</td>
+            <td>{{ service.priceType2 }}</td>
             <td>
                 <button (click)="editService(service)" class="btn btn-success btn-sm">Edit</button>
             </td>
@@ -23,27 +27,40 @@
 
 <p-dialog header="Edit" [(visible)]="dialogVisible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false"
     [resizable]="false">
-    
-        <div class="row mb-2">
-            <div class="col-md-12">
-                <mat-form-field class="w-100">
-                    <mat-label>Name</mat-label>
-                    <input matInput name="name" placeholder="Name" [(ngModel)]="editingService.name">
-                </mat-form-field>
-            </div>
-            
+
+    <div class="row mb-2">
+        <div class="col-md-6">
+            <mat-form-field class="w-100">
+                <mat-label>Name</mat-label>
+                <input matInput name="name" placeholder="Name" [(ngModel)]="editingService.name">
+            </mat-form-field>
         </div>
-        <div class="row mb-2">
-            <div class="col-md-12">
-                <mat-form-field class="w-100">
-                    <mat-label>Price</mat-label>
-                    <input matInput name="address" placeholder="Address" [(ngModel)]="editingService.price">
-                </mat-form-field>
-            </div>
+        <div class="col-md-6">
+            <mat-form-field class="w-100">
+                <mat-label>Price</mat-label>
+                <input matInput name="address" placeholder="Address" [(ngModel)]="editingService.price">
+            </mat-form-field>
         </div>
-        <div class="row mb-2">
-            <div class="col-md-12">
-                <button mat-flat-button color="primary"  (click)="save()">Save Changes</button>
-            </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col-md-6">
+            <label>Price Type 1</label>
+            <select name="priceType1" [(ngModel)]="editingService.priceType1" class="form-select">
+                <option value="Person">Person</option>
+                <option value="Room">Room</option>
+            </select>
         </div>
+        <div class="col-md-6">
+            <label>Price Type 2</label>
+            <select name="priceType1" [(ngModel)]="editingService.priceType2" class="form-select">
+                <option value="Day">Day</option>
+                <option value="Trip">Trip</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col-md-12">
+            <button mat-flat-button color="primary" (click)="save()">Save Changes</button>
+        </div>
+    </div>
 </p-dialog>

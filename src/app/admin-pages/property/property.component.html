@@ -37,11 +37,9 @@
 <p-table [value]="units" tableStyleClass="table table-striped table-bordered">
     <ng-template pTemplate="header">
         <tr>
-            <th>Name</th>
-            <th>Max Guests</th>
-            <th>Min Booking Days</th>
-            <th>Price</th>
-            <th>Services</th>
+            <th [width]="'30%'">Name</th>
+            <th [width]="'30%'">Details</th>
+            <th [width]="'30%'">Services</th>
             <th></th>
         </tr>
     </ng-template>
@@ -52,14 +50,16 @@
                     [src]="'/api/attachments/' + unit.attachments[0].attachmentFile.id" width="60px">
                 {{ unit.name }}
             </td>
-            <td>{{ unit.maxGuests }}</td>
-            <td>{{ unit.minBookingDate }}</td>
-            <td>{{ unit.dayPrice }}</td>
+            <td>
+                Max guests: {{ unit.maxGuests }}<br>
+                Min Booking Days: {{ unit.minBookingDate }}<br>
+                Price: {{ unit.dayPrice | number:'1.2-2' }}<br>
+            </td>
             <td>
 
                 <span class="badge text-bg-secondary" *ngFor="let service of unit.extraServices">{{service.name}}</span>
             </td>
-            <td>
+            <td class="text-end">
                 <a [routerLink]="['/admin/edit-property', unit.id]" class="btn btn-success btn-sm">Edit</a>
             </td>
         </tr>
